@@ -36,7 +36,7 @@ metadata:
 spec:
   selector:
     app: eurekaserver
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8761
