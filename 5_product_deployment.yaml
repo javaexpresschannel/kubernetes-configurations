@@ -19,13 +19,13 @@ spec:
           - containerPort: 8067
           env:
           - name: DB_HOST
-            value: product-database-service
+            value: productdb.cxkwc0qo62hy.ap-south-1.rds.amazonaws.com
           - name: DB_NAME
-            value: productdb
+            value: ecomproductms
           - name: DB_USERNAME
             value: root
           - name: DB_PASSWORD
-            value: root          
+            value: javaexpress1122          
           - name: DB_PORT
             value: "3306"                
           - name: SPRING_APPLICATION_NAME
@@ -44,7 +44,7 @@ metadata:
 spec:
   selector:
     app: product-service
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 8067
