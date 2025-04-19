@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service
+          image: javaexpress/product-service:5.0.0
+          ports:
+          - containerPort: 8067
+          env:
+          - name: DB_HOST
+            value: product-database-service
+          - name: DB_NAME
+            value: productdb
+          - name: DB_USERNAME
+            value: root
+          - name: DB_PASSWORD
+            value: root          
+          - name: DB_PORT
+            value: "3306"                
+          - name: SPRING_APPLICATION_NAME
+            value: product-service
+          - name: SPRING_PROFILES_ACTIVE
+            value: cloud
+          - name: EUREKA_SERVER
+            value: eureka-service
+          - name: ZIPKIN_SERVER
+            value: zipkin-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service-api
+spec:
+  selector:
+    app: product-service
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8067
+      targetPort: 8067
