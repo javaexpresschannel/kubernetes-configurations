@@ -19,13 +19,13 @@ spec:
           - containerPort: 8085
           env:
           - name: DB_HOST
-            value: user-database-service
+            value: javaexpressdb.cxkwc0qo62hy.ap-south-1.rds.amazonaws.com
           - name: DB_NAME
-            value: userdb
+            value: ecomuserms
           - name: DB_USERNAME
             value: root
           - name: DB_PASSWORD
-            value: root     
+            value: javaexpress1122     
           - name: DB_PORT
             value: "3306"                   
           - name: SPRING_APPLICATION_NAME
