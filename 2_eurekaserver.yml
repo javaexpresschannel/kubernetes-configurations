@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: eurekaserver
-        image: javaexpress/eureka-server:3.0.0
+        image: javaexpress/eureka-server:latest
         ports:
         - containerPort: 8761
         env:
