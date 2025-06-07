@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: javaexpress/apigateway-server:5.1.security
+          image: javaexpress/apigateway-server:latest
           ports:
           - containerPort: 8767
           env:
