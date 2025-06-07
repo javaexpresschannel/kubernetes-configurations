@@ -161,28 +161,28 @@ RDS - Creation for USER MS
 
 AWSCLI
 ------
-sudo su -  jenkins
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-sudo apt install unzip
-unzip awscliv2.zip
-sudo ./aws/install
-aws –-version
+sudo su -  jenkins  
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"  
+sudo apt install unzip  
+unzip awscliv2.zip  
+sudo ./aws/install  
+aws –-version  
 
-aws configure 
-	XXXX
-	XXXX
-	ap-south-1
+aws configure   
+	XXXX  
+	XXXX  
+	ap-south-1  
  
-Username : root 
-Password : javaexpress1122
-DB Name : ecomuserms
-Connection String : Dynamic
+Username : root   
+Password : javaexpress1122  
+DB Name : ecomuserms  
+Connection String : Dynamic  
 
-aws rds create-db-instance --db-instance-identifier userdb --db-name ecomuserms --db-instance-class db.t4g.micro --engine mysql --engine-version 8.0.40 --master-username root --master-user-password javaexpress1122 --allocated-storage 20 --storage-type gp2 --publicly-accessible --vpc-security-group-ids $(aws ec2 describe-security-groups --filters Name=group-name,Values=default --query "SecurityGroups[0].GroupId" --output text) --backup-retention-period 0 --no-multi-az --region ap-south-1 --no-deletion-protection
+aws rds create-db-instance --db-instance-identifier userdb --db-name ecomuserms --db-instance-class db.t4g.micro --engine mysql --engine-version 8.0.40 --master-username root --master-user-password javaexpress1122 --allocated-storage 20 --storage-type gp2 --publicly-accessible --vpc-security-group-ids $(aws ec2 describe-security-groups --filters Name=group-name,Values=default --query "SecurityGroups[0].GroupId" --output text) --backup-retention-period 0 --no-multi-az --region ap-south-1 --no-deletion-protection  
 
-Enable Security Group Manually 
-
-Deletion 
+Enable Security Group Manually   
+ 
+Deletion   
 --------
 aws rds delete-db-instance \
   --db-instance-identifier userdb \
@@ -194,45 +194,45 @@ Kubernetes Installation
 
 AWSCLI
 ------
-sudo su -  jenkins
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-sudo apt install unzip
-unzip awscliv2.zip
-sudo ./aws/install
-aws –-version
+sudo su -  jenkins  
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"  
+sudo apt install unzip  
+unzip awscliv2.zip  
+sudo ./aws/install  
+aws –-version  
 
-aws configure 
-	XXXX
-	XXXX
-	ap-south-1
+aws configure   
+	XXXX  
+	XXXX  
+	ap-south-1  
 
 Kubectl
 ------
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x ./kubectl 
-sudo mv ./kubectl /usr/local/bin
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"  
+chmod +x ./kubectl   
+sudo mv ./kubectl /usr/local/bin   
 
 EKSCTL
 ------
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin 
-eksctl version
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp  
+sudo mv /tmp/eksctl /usr/local/bin   
+eksctl version  
 
 Create Kubernetes Cluster (20 min)
 -------------------------
-eksctl create cluster --name javaexpress-new-cluster1 --version 1.29 --region ap-south-1 --nodegroup-name worker-nodes --node-type t3.medium --nodes 3
+eksctl create cluster --name javaexpress-new-cluster1 --version 1.29 --region ap-south-1 --nodegroup-name worker-nodes --node-type t3.medium --nodes 3  
 
 Delete LoadBalancer
 -------------------
-kubectl delete svc springboot-svc 
+kubectl delete svc springboot-svc   
 
 Delete Kubernetes Cluster 
 -------------------------
-eksctl delete cluster --name javaexpress-new-cluster1
+eksctl delete cluster --name javaexpress-new-cluster1  
 
 Note:
-After verifying the Kubernetes setup, run the Zipkin configuration file from the following repository:  
-https://github.com/javaexpresschannel/kubernetes-configurations
+After verifying the Kubernetes setup, run the Zipkin configuration file from the following repository:    
+https://github.com/javaexpresschannel/kubernetes-configurations  
 
 
 
