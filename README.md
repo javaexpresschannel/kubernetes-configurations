@@ -23,6 +23,7 @@ Step by Step for Microservices Deployment
 7. Install Jenkins
 8. Install Docker 
 9. Install Kubernetes
+10. Install RDS
 
 
 How to create EC2 Instance in AWS (ap-south-1)
@@ -52,8 +53,8 @@ How to connect in Mobaxterm?
 
 Java Installation
 ----------------- 
-sudo apt-get update \n
-sudo apt install openjdk-17-jre-headless -y
+sudo apt-get update  
+sudo apt install openjdk-17-jre-headless -y  
 
 Jenkins Installation
 --------------------
@@ -76,10 +77,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Optional Commands:
 ------------------
-sudo systemctl enable jenkins
-sudo systemctl status jenkins
-sudo systemctl stop jenkins
-sudo systemctl start jenkins
+sudo systemctl enable jenkins  
+sudo systemctl status jenkins  
+sudo systemctl stop jenkins  
+sudo systemctl start jenkins  
 -------------------
 
 Setup Maven in Jenkins 
@@ -105,9 +106,9 @@ sudo su - jenkins
 
 Docker Installation
 -------------------
-sudo apt install docker.io -y
-sudo usermod -aG docker jenkins 
-sudo chmod 666 /var/run/docker.sock
+sudo apt install docker.io -y  
+sudo usermod -aG docker jenkins   
+sudo chmod 666 /var/run/docker.sock  
 
 -------------if Restart-----------------------------------
 sudo su - jenkins 
@@ -115,9 +116,9 @@ docker images
 
 Docker Commands
 ---------------
-docker build -t javaexpress/dockerimageName:latest . 
-docker login -u username -p password 
-docker push javaexpress/dockerimageName:latest 
+docker build -t javaexpress/dockerimageName:latest .  
+docker login -u username -p password   
+docker push javaexpress/dockerimageName:latest   
 ------------------------------------------------------------------------
 
 setup webhook in git repo 
@@ -157,6 +158,21 @@ Before Running Kubernetes Create RDS Instance for user-service
 
 RDS - Creation for USER MS
 --------------------------
+
+AWSCLI
+------
+sudo su -  jenkins
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip
+unzip awscliv2.zip
+sudo ./aws/install
+aws –-version
+
+aws configure 
+	XXXX
+	XXXX
+	ap-south-1
+ 
 Username : root 
 Password : javaexpress1122
 DB Name : ecomuserms
@@ -217,6 +233,7 @@ eksctl delete cluster --name javaexpress-new-cluster1
 Note:
 After verifying the Kubernetes setup, run the Zipkin configuration file from the following repository:  
 https://github.com/javaexpresschannel/kubernetes-configurations
+
 
 
 
