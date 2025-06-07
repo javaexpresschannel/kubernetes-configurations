@@ -92,17 +92,17 @@ Version: 3.9.9
 
 Admin Privileges for jenkins users 
 
-sudo vi /etc/sudoers 
-jenkins ALL=(ALL) NOPASSWD: ALL 
-To Save the file 
-	Enter i in keyword 
-	Paste below command 
-		jenkins ALL=(ALL) NOPASSWD: ALL 
-	Esc
-	:wq! (enter)
+sudo vi /etc/sudoers   
+jenkins ALL=(ALL) NOPASSWD: ALL   
+To Save the file   
+	Enter i in keyword   
+	Paste below command   
+		jenkins ALL=(ALL) NOPASSWD: ALL   
+	Esc  
+	:wq! (enter)  
 	
-sudo cat -n /etc/sudoers (verification)
-sudo su - jenkins
+sudo cat -n /etc/sudoers (verification)  
+sudo su - jenkins  
 
 Docker Installation
 -------------------
