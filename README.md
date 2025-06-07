@@ -110,9 +110,9 @@ sudo apt install docker.io -y
 sudo usermod -aG docker jenkins   
 sudo chmod 666 /var/run/docker.sock  
 
--------------if Restart-----------------------------------
-sudo su - jenkins 
-docker images
+-------------if Restart-----------------------------------  
+sudo su - jenkins   
+docker images  
 
 Docker Commands
 ---------------
