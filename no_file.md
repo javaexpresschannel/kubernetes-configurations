@@ -190,7 +190,7 @@ eksctl create cluster \
 ## Delete LoadBalancer Service
 
 ```bash
-kubectl delete svc springboot-svc
+kubectl delete svc user-service-api
 ```
 
 ---
@@ -211,12 +211,3 @@ eksctl delete cluster --name javaexpress-new-cluster1
 
 ```
 
----
-
-Let me know if you’d like to:
-- Add badges (build status, docker pulls, etc.)
-- Include a table of contents
-- Auto-generate documentation from code
-
-I can also convert this into a downloadable `README.md` file if you'd like!
-```
