@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: javaexpress/product-service:5.0.0
+          image: javaexpress/product-service:latest
           ports:
           - containerPort: 8067
           env:
