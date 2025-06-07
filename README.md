@@ -52,7 +52,7 @@ How to connect in Mobaxterm?
 
 Java Installation
 ----------------- 
-sudo apt-get update
+sudo apt-get update \n
 sudo apt install openjdk-17-jre-headless -y
 
 Jenkins Installation
